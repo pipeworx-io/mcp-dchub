@@ -1,0 +1,18 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.pipeworx-io/dchub",
+  "title": "Dchub",
+  "description": "DC Hub -- data-center site selection, power and grid intelligence. Live per-request proxy of DC…",
+  "version": "0.1.0",
+  "websiteUrl": "https://pipeworx.io/packs/dchub",
+  "repository": {
+    "url": "https://github.com/pipeworx-io/mcp-dchub",
+    "source": "github"
+  },
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://gateway.pipeworx.io/dchub/mcp"
+    }
+  ]
+}
