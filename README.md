@@ -2,7 +2,7 @@
 
 Data-center site selection, power and grid intelligence from DC Hub: facility registry, per-metro market intelligence, live grid fuel mix and demand, leasable capacity, and a one-call planner for multi-part siting questions.
 
-Part of [Pipeworx](https://pipeworx.io) — an MCP gateway connecting AI agents to 1856+ live data sources. This is an independent, unofficial integration — not affiliated with, endorsed by, or published by the upstream provider.
+Part of [Pipeworx](https://pipeworx.io) — an MCP gateway connecting AI agents to 1858+ live data sources. This is an independent, unofficial integration — not affiliated with, endorsed by, or published by the upstream provider.
 
 ## Tools
 
@@ -11,6 +11,8 @@ Part of [Pipeworx](https://pipeworx.io) — an MCP gateway connecting AI agents 
 - `dchub_get_market_intel(market)` — vacancy, pricing, pipeline and operators for one metro, by market slug (e.g. `northern-virginia`).
 - `dchub_get_grid_data(iso)` — live fuel mix and demand for a grid (PJM, ERCOT, CAISO and others).
 - `dchub_source_capacity(min_mw, region, ...)` — powered land, shells, turnkey capacity and colocation available to buy or lease.
+- `dchub_get_interconnection_queue(iso)` — grid interconnection queue depth per US ISO (queued generation GW, ERCOT's large-load queue); omit `iso` for an all-ISO snapshot.
+- `dchub_get_news(query, category, source, date_from, date_to, limit)` — curated data-center industry news from 40+ trade sources, refreshed every 30 min.
 
 ## Auth
 
@@ -66,7 +68,7 @@ directly, instead of just this one's:
 }
 ```
 
-Both URLs reach the same gateway and the same 1856+ data sources. The
+Both URLs reach the same gateway and the same 1858+ data sources. The
 only difference is which pack's tools are listed **directly**; `ask_pipeworx`
 reaches all of them from either one.
 
