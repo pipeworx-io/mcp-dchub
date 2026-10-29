@@ -3,7 +3,7 @@
   "name": "io.github.pipeworx-io/dchub",
   "title": "Dchub",
   "description": "DC Hub -- data-center site selection, power and grid intelligence. Live per-request proxy of DC…",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "websiteUrl": "https://pipeworx.io/packs/dchub",
   "repository": {
     "url": "https://github.com/pipeworx-io/mcp-dchub",

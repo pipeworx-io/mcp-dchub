@@ -1,0 +1,168 @@
+[
+  {
+    "name": "dchub_execute_plan",
+    "description": "Answer a multi-part data-center question in one call (DC Hub): e.g. \"rank markets for a 200 MW AI campus\" or \"power headroom in PJM\". Plans and runs the needed lookups and returns the combined result with citations. Keyless calls return a preview.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "intent": {
+          "type": "string",
+          "description": "The question, unchanged, e.g. \"rank markets for a 200 MW AI campus\""
+        },
+        "market": {
+          "type": "string",
+          "description": "Optional market slug, e.g. northern-virginia"
+        },
+        "capacity_mw": {
+          "type": "number",
+          "description": "Optional target capacity in MW"
+        },
+        "iso": {
+          "type": "string",
+          "description": "Optional grid/ISO, e.g. PJM, ERCOT"
+        },
+        "state": {
+          "type": "string",
+          "description": "Optional US state code"
+        }
+      },
+      "required": [
+        "intent"
+      ]
+    }
+  },
+  {
+    "name": "dchub_search_facilities",
+    "description": "Find data centers and who operates them (DC Hub facility registry), filtered by city, state, country, operator or MW range. Returns name, operator, location and verification flag; MW detail needs a DC Hub key. Keyless calls return a preview.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "query": {
+          "type": "string",
+          "description": "Free-text search"
+        },
+        "country": {
+          "type": "string",
+          "description": "Country code, e.g. US"
+        },
+        "state": {
+          "type": "string",
+          "description": "State code, e.g. VA"
+        },
+        "city": {
+          "type": "string",
+          "description": "City, e.g. Ashburn"
+        },
+        "operator": {
+          "type": "string",
+          "description": "Operator, e.g. Equinix"
+        },
+        "min_capacity_mw": {
+          "type": "number",
+          "description": "Minimum MW"
+        },
+        "max_capacity_mw": {
+          "type": "number",
+          "description": "Maximum MW"
+        },
+        "limit": {
+          "type": "number",
+          "description": "Rows to return (default 10)"
+        },
+        "offset": {
+          "type": "number",
+          "description": "Paging offset"
+        }
+      }
+    }
+  },
+  {
+    "name": "dchub_get_market_intel",
+    "description": "Data-center market intelligence for one metro (DC Hub): facility count, tracked MW, status mix, top providers, pipeline and lease pricing. Market is a slug such as northern-virginia. Keyless calls return a trimmed preview.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "market": {
+          "type": "string",
+          "description": "Market slug, e.g. northern-virginia, dallas, phoenix"
+        },
+        "metric": {
+          "type": "string",
+          "description": "Optional metric focus"
+        },
+        "period": {
+          "type": "string",
+          "description": "Optional period"
+        }
+      },
+      "required": [
+        "market"
+      ]
+    }
+  },
+  {
+    "name": "dchub_get_grid_data",
+    "description": "Live electricity grid data for one grid (DC Hub): fuel mix and demand for US ISOs (PJM, ERCOT, CAISO, MISO, SPP, NYISO, ISO-NE), utility balancing authorities, and international grids.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "iso": {
+          "type": "string",
+          "description": "Grid code, e.g. PJM, ERCOT, CAISO"
+        },
+        "metric": {
+          "type": "string",
+          "description": "Optional metric"
+        },
+        "period": {
+          "type": "string",
+          "description": "Optional period"
+        }
+      },
+      "required": [
+        "iso"
+      ]
+    }
+  },
+  {
+    "name": "dchub_source_capacity",
+    "description": "Search data-center capacity available to buy or lease (DC Hub Capacity Source): powered land, powered shells, turnkey capacity and colocation, by size (min_kw / min_mw) and location (region, state, market).",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "min_mw": {
+          "type": "number",
+          "description": "Minimum size in MW"
+        },
+        "min_kw": {
+          "type": "number",
+          "description": "Minimum size in kW"
+        },
+        "region": {
+          "type": "string",
+          "description": "Region key, e.g. europe, north-america"
+        },
+        "location": {
+          "type": "string",
+          "description": "Free-text location"
+        },
+        "state": {
+          "type": "string",
+          "description": "US state code"
+        },
+        "market": {
+          "type": "string",
+          "description": "Market slug"
+        },
+        "delivery_type": {
+          "type": "string",
+          "description": "Optional delivery type"
+        },
+        "limit": {
+          "type": "number",
+          "description": "Rows to return"
+        }
+      }
+    }
+  }
+]
